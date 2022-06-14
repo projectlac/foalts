@@ -1,13 +1,29 @@
 {
   "port": "env(PORT)",
   "settings": {
+    "jwt": {
+      "secret": "Ak0WcVcGuOoFuZ4oqF1tgqbW6dIAeSacIN6h7qEyJM8=",
+      "secretEncoding": "base64"
+    },
     "loggerFormat": "tiny",
     "session": {
-      "store": "@foal/typeorm"
+      "store": "@foal/typeorm",
+      "csrf": {
+        "enabled": true
+      }
+    },
+    "disk": {
+      "local": {
+        "directory": "assets"
+      }
     }
   },
   "database": {
-    "type": "better-sqlite3",
-    "database": "./db.sqlite3"
+    "type": "postgres",
+    "host": "env(DB_HOST)",
+    "port": "env(DB_PORT)",
+    "username": "env(DB_USERNAME)",
+    "password": "env(DB_PASSWORD)",
+    "database": "env(DB_NAME)"
   }
 }
